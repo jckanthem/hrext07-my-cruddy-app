@@ -1,0 +1,35 @@
+.content{
+	display:grid;
+	width:400px;
+	height:750px;
+	grid-template-columns: repeat(3, 33%);
+	grid-template-rows: repeat(12, auto);
+	background-color: #eee9e9;
+}
+#title{
+	display:flex;
+	grid-column: 1 / 4;
+	grid-row: 2;
+	justify-content: center;
+	align-items: center;
+}
+.btn-folder {
+	height: 40px;
+	width: 100%;
+}
+.btn-edit {
+	grid-column: 3/4;
+	grid-row: 1;
+	place-self: center;
+}
+.btn-newFolder{
+	grid-column: 3/4;
+	grid-row: 13;
+	place-self: center;
+}
+.container-folder{
+	display: flex;
+	grid-column: 1/4;
+	grid-row: 3 / span 10;
+	overflow-y: hidden;
+}
