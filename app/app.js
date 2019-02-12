@@ -9,7 +9,6 @@ $(document).ready(function(){
   // this is where we jquery
   //var keyData = 'ourKey'; // going to need to make this dynamic?
 
-
   $('.btn-add').on('click', function(e){
     console.log(e);
     var keyData = $('.input-key').val();
@@ -23,7 +22,7 @@ $(document).ready(function(){
     // <div class="display-data-item" data-keyValue="keyData">valueData</div>
     // if you use backticks ` you can use ${templateLiterals}
     // TODO make this vars make sense across the app
-    $('.container-data').html('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
+    $('.container-data').append('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
     $('.input-key').val('');
     $('.input-value').val('');
   });
