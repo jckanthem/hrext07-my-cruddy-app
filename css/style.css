@@ -2,34 +2,83 @@
 	display:grid;
 	width:400px;
 	height:750px;
-	grid-template-columns: repeat(3, 33%);
+	grid-template-columns: repeat(4, 25%);
 	grid-template-rows: repeat(12, auto);
 	background-color: #eee9e9;
 }
-#title{
+.container-text{
 	display:flex;
-	grid-column: 1 / 4;
+	flex-direction: column;
+	grid-column: 1 / 5;
 	grid-row: 2;
+	min-height:50px;
+	max-height: 50px;
 	justify-content: center;
 	align-items: center;
 }
+.editText{
+	font-size: 15px;
+	grid-row: 1;
+	grid-column: 1/4;
+	align-self: center;
+}
+#title{
+	font-size: 55px;
+	position:relative;
+}
 .btn-folder {
-	height: 40px;
+	display:inline-flex;
+	justify-content: center;
+	min-height:40px;
+	max-height:40px;
 	width: 100%;
+	font-size: 20px;
+	font-weight: 800;
+}
+.btn-folder > button {
+	align-self: flex-start;
+
 }
 .btn-edit {
-	grid-column: 3/4;
+	grid-column: 4/5;
 	grid-row: 1;
 	place-self: center;
 }
 .btn-newFolder{
-	grid-column: 3/4;
+	grid-column: 4/5;
 	grid-row: 13;
 	place-self: center;
 }
 .container-folder{
 	display: flex;
-	grid-column: 1/4;
+	flex-direction: column;
+	grid-column: 1/5;
 	grid-row: 3 / span 10;
-	overflow-y: hidden;
+	overflow-y: scroll;
+}
+.newFolderMenu{
+	background-color: #8b8989;
+	display: flex;
+	flex-direction: column;
+	z-index: 100;
+	grid-column: 2/4;
+	grid-row: 5/7;
+	justify-content: center;
+	align-items: center;
+}
+.editMenu{
+	background-color: #8b8989;
+	display: flex;
+	flex-direction: column;
+	z-index: 100;
+	grid-column: 2/4;
+	grid-row: 5/7;
+	justify-content: center;
+	align-items: center;
+}
+.editMenuButtons{
+	display:flex;
+	justify-content: center;
+	flex-direction: column;
+	align-items: space-between;
 }

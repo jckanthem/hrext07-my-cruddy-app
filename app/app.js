@@ -6,42 +6,58 @@ interact with localstorage
  */
 
 $(document).ready(function(){
-  // this is where we jquery
-  //var keyData = 'ourKey'; // going to need to make this dynamic?
+  if(localStorage["folders"] !== undefined){
+    let folders = localStorage.getItem("folders");
+    folders = JSON.parse(folders);
+    for(let i in folders){
+      $(".container-folder").append(folders[i]);
+    }
+  }
+  else{
+    let folders = ['<button class="btn-folder" id="folder-default"> Notes </button>'];
+    $(".container-folder").append(folders[0]);
+    folders = JSON.stringify(folders);
+    localStorage["folders"] = folders;
+  }
+  $(".newFolderMenu").hide();
+  $(".btn-newFolder").click(function(){
+    $(".newFolderMenu").show(175);
+    $(".content > *").not(".newFolderMenu").hide();
+    $(".cancel").click(function(){
+      $(".content > *").not(".newFolderMenu").show(175);
+      $(".newFolderMenu").hide();
+    });
+    $(".add").click(function(){
+      let name = $(".folderName").val();
+      let folders = localStorage["folders"]
+      folders = JSON.parse(folders);
+      let folder = '<button class="btn-folder" id="folder-' + folders.length + '">' +  name + '</button>';
+      folders.push(folder);
+      folders = JSON.stringify(folders);
+      localStorage["folders"] = folders;
+      $(".container-folder").append(folder);
+      $(".content > *").not(".newFolderMenu").show(175);
+      $(".newFolderMenu").hide();
+    })
+  })
+  $(".editMenu").hide();
+  let edit = false;
+  $(".btn-edit").click(function(){
+    if(edit === true){
+      $(".btn-edit").text("Edit")
+      $(".editText").remove();
+      edit = false;
+    } else{
+      if($(".editText").length === 0){
+        $(".content").prepend('<p class="editText">Click a folder to modify/delete</p>');
+      }
+      $(".btn-edit").text("Done")
+      edit = true;
+      $(".btn-folder").click(function(){
+        $(".editMenu > p").text("Edit Folder "  + $(this).text())
 
-  $('.btn-add').on('click', function(e){
-    console.log(e);
-    var keyData = $('.input-key').val();
-    var valueData = $('.input-value').val();
-    // write to db
-    localStorage.setItem(keyData, valueData);
-    // read from db
-    var displayText = keyData + ' | ' + localStorage.getItem(keyData);
-    // this only displays the last one? might want to switch to html
-    // and append a div
-    // <div class="display-data-item" data-keyValue="keyData">valueData</div>
-    // if you use backticks ` you can use ${templateLiterals}
-    // TODO make this vars make sense across the app
-    $('.container-data').append('<div class="display-data-item" data-keyValue="'+ keyData +'">'+valueData+'</div>');
-    $('.input-key').val('');
-    $('.input-value').val('');
-  });
-
-
-  // update db
-    // need to expand when  more than 1 item is added
-
-  // delete item
-  $('.container-data').on('click', '.display-data-item', function(e){
-    console.log(e.currentTarget.dataset.keyvalue);
-    var keyData = e.currentTarget.dataset.keyvalue;
-    localStorage.removeItem(keyData);
-    $('.container-data').text('');
-  });
-  // delete all?
-  $('.btn-clear').click(function(){
-    localStorage.clear();
-    $('.container-data').text('');
-  });
-
-});
+        $(".editMenu").show();
+      })
+  }
+  })
+})

@@ -2,46 +2,40 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>HREXT07 R00lz!</title>
-  <script
-          src="https://code.jquery.com/jquery-3.3.1.js"
+  <title>Notes</title>
+  <script src="https://code.jquery.com/jquery-3.3.1.js"
           integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60="
           crossorigin="anonymous"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.9.1/underscore-min.js"></script>
   <script src="app/app.js"></script>
   <link rel="stylesheet" href="css/style.css">
-
-
-  <!--
-
-√ create container
-√ create button
-√ input field
-√ container to display text
-√ update button(or maybe click on the container item)
-√ delete button
-container for the response-feedback (start with alert)
--->
 </head>
 <body>
 
 <div class="container-main">
-  <!-- <header>My Cruddy App</header>
-  <div class="container-form">
-    <input type="text" class="input-key" placeholder="enter key">
-    <input type="text" class="input-value" placeholder="enter value">
-    <button class="btn-add">Submit</button>
-    <button class="btn-update">Update</button>
-    <button class="btn-delete">Delete</button>
-    <button class="btn-clear">Clear</button>
-  </div>
-  <div class="container-data"></div> -->
   </div>
   <div class="content">
-    <header id="title"> <p>Folders</p> </header>
+    <div class="newFolderMenu">
+      <p> New Folder </p>
+      <input type="text" class="folderName" placeholder="Folder Name">
+      <div class="newFolderButtons">
+        <button class="cancel">Cancel</button>
+        <button class="add">Save</button>
+      </div>
+    </div>
+    <div class="editMenu">
+      <p> Edit Folder Name </p>
+      <input type="text" class="folderNameEdit">
+      <div class="editMenuButtons">
+        <button class="saveEdit">Save</button>  
+        <button class="cancelEdit">Cancel</button>
+        <button class="DeleteFolder">Delete Folder</button>
+      </div>
+    </div>
+    <div class="container-text">
+      <p id="title">Folders </p>
+    </div>
     <div class="container-folder">
-      <button class="btn-folder" id="folder-default"> Notes </button>
-
     </div>
     <button class="btn-newFolder"> New Folder </button>
     <button class="btn-edit"> Edit </button>
